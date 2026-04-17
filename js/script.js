@@ -65,8 +65,9 @@ const sectionObserver = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all sections
+// Observe all sections - add animate class first
 document.querySelectorAll('section').forEach(section => {
+    section.classList.add('animate');
     sectionObserver.observe(section);
 });
 

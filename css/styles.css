@@ -83,8 +83,8 @@ body {
     height: 100%;
     z-index: -2;
     background-image: 
-        linear-gradient(rgba(88, 166, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(88, 166, 255, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(88, 166, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(88, 166, 255, 0.08) 1px, transparent 1px);
     background-size: 50px 50px;
     animation: gridMove 20s linear infinite;
 }
@@ -100,7 +100,7 @@ body {
     z-index: -1;
     font-size: 14px;
     color: var(--code-keyword);
-    opacity: 0.15;
+    opacity: 0.4;
     animation: floatCode 20s linear infinite;
     white-space: nowrap;
 }
@@ -111,17 +111,17 @@ body {
 .floating-code:nth-child(4) { top: 80%; right: 5%; animation-delay: -15s; color: var(--accent-cyan); }
 
 @keyframes floatCode {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0.1; }
-    50% { transform: translateY(-30px) rotate(2deg); opacity: 0.2; }
-    100% { transform: translateY(0) rotate(0deg); opacity: 0.1; }
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+    50% { transform: translateY(-30px) rotate(2deg); opacity: 0.5; }
+    100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
 }
 
 /* Glowing Orbs */
 .orb {
     position: fixed;
     border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.3;
+    filter: blur(80px);
+    opacity: 0.5;
     z-index: -1;
     animation: orbFloat 15s ease-in-out infinite;
 }
@@ -169,12 +169,17 @@ body {
 section {
     padding: 100px 0;
     position: relative;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: var(--transition-slow);
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.6s ease;
 }
 
-section.visible {
+section.animate {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+section.animate.visible {
     opacity: 1;
     transform: translateY(0);
 }
