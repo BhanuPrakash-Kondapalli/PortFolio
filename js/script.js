@@ -7,7 +7,6 @@ hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
 });
 
-// Close mobile menu when clicking on a link
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active');
@@ -15,16 +14,12 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-// Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     });
 });
@@ -39,6 +34,37 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Generate Starfield
+function createStars() {
+    const starsContainer = document.createElement('div');
+    starsContainer.className = 'stars';
+    document.body.insertBefore(starsContainer, document.body.firstChild);
+    
+    const starCount = 150;
+    
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        
+        const size = Math.random() * 2 + 1;
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        const duration = Math.random() * 3 + 2;
+        const opacity = Math.random() * 0.5 + 0.3;
+        
+        star.style.cssText = `
+            width: ${size}px;
+            height: ${size}px;
+            left: ${x}%;
+            top: ${y}%;
+            --duration: ${duration}s;
+            --opacity: ${opacity};
+        `;
+        
+        starsContainer.appendChild(star);
+    }
+}
+
 // Intersection Observer for section animations
 const observerOptions = {
     threshold: 0.1,
@@ -50,7 +76,6 @@ const sectionObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
             
-            // Add staggered animation for child elements
             const children = entry.target.querySelectorAll('.about-card, .info-item, .skill-category, .project-card, .education-item, .certification-card, .activity-card, .contact-item');
             children.forEach((child, index) => {
                 child.style.opacity = '0';
@@ -65,7 +90,6 @@ const sectionObserver = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe all sections - add animate class first
 document.querySelectorAll('section').forEach(section => {
     section.classList.add('animate');
     sectionObserver.observe(section);
@@ -110,38 +134,9 @@ function typeText() {
     setTimeout(typeText, typeSpeed);
 }
 
-// Start typing animation
 if (typingElement) {
     typeText();
 }
-
-// Parallax effect for floating elements
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const orbs = document.querySelectorAll('.orb');
-    
-    orbs.forEach((orb, index) => {
-        const speed = (index + 1) * 0.05;
-        orb.style.transform = `translateY(${scrolled * speed}px)`;
-    });
-});
-
-// Mouse parallax for hero section
-document.addEventListener('mousemove', (e) => {
-    const heroContent = document.querySelector('.hero-content');
-    if (heroContent) {
-        const x = (window.innerWidth - e.pageX * 2) / 100;
-        const y = (window.innerHeight - e.pageY * 2) / 100;
-        heroContent.style.transform = `translate(${x}px, ${y}px)`;
-    }
-});
-
-// Add hover effects to cards
-document.querySelectorAll('.project-card, .skill-category, .about-card, .education-item, .certification-card, .activity-card, .contact-item').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transition = 'all 0.3s ease';
-    });
-});
 
 // Scroll progress indicator
 window.addEventListener('scroll', () => {
@@ -159,7 +154,7 @@ window.addEventListener('scroll', () => {
             left: 0;
             width: 0%;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary-color), var(--accent-purple), var(--accent-cyan));
+            background: linear-gradient(90deg, var(--primary-color), var(--nebula-pink), var(--accent-cyan));
             z-index: 1001;
             transition: width 0.1s ease;
         `;
@@ -173,40 +168,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const yearElement = document.querySelector('.footer p');
     if (yearElement) {
         const currentYear = new Date().getFullYear();
-        yearElement.innerHTML = `Built with <span>&lt;3</span> | © ${currentYear} Kondapalli Bhanu Prakash`;
+        yearElement.innerHTML = `✨ Built with passion | © ${currentYear} Kondapalli Bhanu Prakash`;
     }
+    
+    createStars();
 });
 
-// Performance: Debounce scroll events
-function debounce(func, wait = 10) {
-    let timeout;
-    return function(...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), wait);
-    };
-}
-
-// Optimize scroll handlers
-window.addEventListener('scroll', debounce(() => {
-    // Scroll-based animations handled by Intersection Observer
-}));
-
-// Add zoom-in animation for images on scroll
-const imageObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('zoom-in');
-        }
-    });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.code-editor').forEach(img => {
-    imageObserver.observe(img);
-});
-
-// Console message
-console.log('%c🚀 Portfolio loaded successfully!', 'color: #58a6ff; font-size: 14px;');
-console.log('%cBuilt by Kondapalli Bhanu Prakash', 'color: #7ee787; font-size: 12px;');
+console.log('%c🚀 Portfolio loaded successfully!', 'color: #6366f1; font-size: 14px;');
+console.log('%c✨ Dark Space Theme', 'color: #22d3ee; font-size: 12px;');
 
 // Navbar background change on scroll with blur
 window.addEventListener('scroll', () => {
