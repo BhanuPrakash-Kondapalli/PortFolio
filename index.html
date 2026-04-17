@@ -6,20 +6,25 @@
     <title>Kondapalli Bhanu Prakash - Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Animated Background -->
-    <div class="bg-animation">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-        <div class="orb orb-4"></div>
-    </div>
+    <div class="bg-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    
+    <!-- Floating Code Elements -->
+    <div class="floating-code">const developer = "passionate";</div>
+    <div class="floating-code">function createInnovation() {</div>
+    <div class="floating-code">return await build();</div>
+    <div class="floating-code">console.log("Hello World");</div>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#home" class="logo">Bhanu.</a>
+            <a href="#home" class="logo">Bhanu</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -40,48 +45,82 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <p class="greeting">Hello, I'm</p>
-                <h1>Kondapalli Bhanu Prakash</h1>
-                <p class="tagline">Electronics & Communication Engineer</p>
-                <p class="hero-description">Passionate about creating innovative solutions through technology. 
-                   Specialized in embedded systems, IoT, and web development.</p>
+                <div class="typing-container">
+                    <span class="typing-text"></span><span class="typing-cursor"></span>
+                </div>
+                <h1>Kondapalli <span class="highlight">Bhanu Prakash</span></h1>
+                <p class="hero-description">Electronics & Communication Engineer passionate about building innovative solutions through code. Specialized in embedded systems, IoT, and full-stack development.</p>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    <a href="#projects" class="btn btn-primary"><i class="fas fa-code"></i> View Projects</a>
+                    <a href="#contact" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> Contact Me</a>
                 </div>
                 <div class="social-links">
-                    <a href="https://linkedin.com/in/kondapalli-bhanu-prakash-a63375364" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://linkedin.com/in/kondapalli-bhanu-prakash-a63375364" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                     <a href="mailto:bhanukondapalli3340@gmail.com"><i class="fas fa-envelope"></i></a>
-                    <a href="tel:+919542793340"><i class="fas fa-phone"></i></a>
+                    <a href="tel:+919542793340"><i class="fas fa-phone-alt"></i></a>
                 </div>
             </div>
             <div class="hero-image">
-                <div class="image-container">
-                    <div class="profile-shape">
-                        <i class="fas fa-user-graduate"></i>
+                <div class="code-editor">
+                    <div class="editor-header">
+                        <span class="editor-dot red"></span>
+                        <span class="editor-dot yellow"></span>
+                        <span class="editor-dot green"></span>
+                        <span class="editor-title">portfolio.js</span>
                     </div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
+                    <div class="editor-body">
+                        <div class="code-line">
+                            <span class="line-number">1</span>
+                            <span class="code-content"><span class="keyword">const</span> <span class="cyan">developer</span> = {</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">2</span>
+                            <span class="code-content">  <span class="string">name</span>: <span class="string">"Bhanu Prakash"</span>,</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">3</span>
+                            <span class="code-content">  <span class="string">role</span>: <span class="string">"ECE Engineer"</span>,</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">4</span>
+                            <span class="code-content">  <span class="string">passion</span>: [<span class="string">"IoT"</span>, <span class="string">"Embedded"</span>],</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">5</span>
+                            <span class="code-content">  <span class="function">build</span>: <span class="keyword">function</span>() {</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">6</span>
+                            <span class="code-content">    <span class="keyword">return</span> <span class="keyword">this</span>.passion.<span class="function">map</span>(p =></span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">7</span>
+                            <span class="code-content">      <span class="purple">innovation</span> + p);</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">8</span>
+                            <span class="code-content">  }</span>
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">9</span>
+                            <span class="code-content">};</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="scroll-down">
-            <a href="#about">
-                <i class="fas fa-chevron-down"></i>
-            </a>
+        <div class="scroll-indicator">
+            <span class="mouse"></span>
+            <span>scroll to explore</span>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <h2 class="section-title"><span>About Me</span></h2>
             <div class="about-content">
-                <div class="about-text">
+                <div class="about-card">
                     <h3>Career Objective</h3>
                     <p>Aiming for a challenging position in a progressive organization where I can leverage my Electronics and Communication Engineering expertise, analytical thinking, and problem-solving skills to create innovative solutions, contribute to meaningful projects, and advance my professional growth.</p>
                 </div>
@@ -110,7 +149,7 @@
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
+            <h2 class="section-title"><span>Technical Skills</span></h2>
             <div class="skills-grid">
                 <div class="skill-category">
                     <h3>Programming Languages</h3>
@@ -201,7 +240,7 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
+            <h2 class="section-title"><span>Projects</span></h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-icon">
@@ -247,7 +286,7 @@
     <!-- Education Section -->
     <section id="education" class="education">
         <div class="container">
-            <h2 class="section-title">Education</h2>
+            <h2 class="section-title"><span>Education</span></h2>
             <div class="education-timeline">
                 <div class="education-item">
                     <div class="education-icon">
@@ -286,7 +325,7 @@
     <!-- Certifications Section -->
     <section id="certifications" class="certifications">
         <div class="container">
-            <h2 class="section-title">Certifications</h2>
+            <h2 class="section-title"><span>Certifications</span></h2>
             <div class="certifications-grid">
                 <div class="certification-card">
                     <i class="fas fa-certificate"></i>
@@ -310,7 +349,7 @@
     <!-- Extra-Curricular Section -->
     <section id="activities" class="activities">
         <div class="container">
-            <h2 class="section-title">Extra-Curricular Activities</h2>
+            <h2 class="section-title"><span>Extra-Curricular</span></h2>
             <div class="activities-grid">
                 <div class="activity-card">
                     <i class="fas fa-palette"></i>
@@ -329,7 +368,7 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <h2 class="section-title"><span>Get In Touch</span></h2>
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-item">
@@ -368,7 +407,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 Kondapalli Bhanu Prakash. All rights reserved.</p>
+            <p><span>&lt;/&gt;</span> Built with passion | © 2026 Kondapalli Bhanu Prakash</p>
         </div>
     </footer>
 

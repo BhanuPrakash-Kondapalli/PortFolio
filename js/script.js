@@ -29,6 +29,184 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// Intersection Observer for section animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            
+            // Add staggered animation for child elements
+            const children = entry.target.querySelectorAll('.about-card, .info-item, .skill-category, .project-card, .education-item, .certification-card, .activity-card, .contact-item');
+            children.forEach((child, index) => {
+                child.style.opacity = '0';
+                child.style.transform = 'translateY(30px)';
+                child.style.transition = 'all 0.5s ease';
+                setTimeout(() => {
+                    child.style.opacity = '1';
+                    child.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        }
+    });
+}, observerOptions);
+
+// Observe all sections
+document.querySelectorAll('section').forEach(section => {
+    sectionObserver.observe(section);
+});
+
+// Typing Animation
+const typingTexts = [
+    'Electronics & Communication Engineer',
+    'Embedded Systems Developer',
+    'IoT Enthusiast',
+    'Web Developer',
+    'Problem Solver'
+];
+
+let textIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typingElement = document.querySelector('.typing-text');
+
+function typeText() {
+    const currentText = typingTexts[textIndex];
+    
+    if (isDeleting) {
+        typingElement.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        typingElement.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+    }
+    
+    let typeSpeed = isDeleting ? 50 : 100;
+    
+    if (!isDeleting && charIndex === currentText.length) {
+        typeSpeed = 2000;
+        isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % typingTexts.length;
+        typeSpeed = 500;
+    }
+    
+    setTimeout(typeText, typeSpeed);
+}
+
+// Start typing animation
+if (typingElement) {
+    typeText();
+}
+
+// Parallax effect for floating elements
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const orbs = document.querySelectorAll('.orb');
+    
+    orbs.forEach((orb, index) => {
+        const speed = (index + 1) * 0.05;
+        orb.style.transform = `translateY(${scrolled * speed}px)`;
+    });
+});
+
+// Mouse parallax for hero section
+document.addEventListener('mousemove', (e) => {
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent) {
+        const x = (window.innerWidth - e.pageX * 2) / 100;
+        const y = (window.innerHeight - e.pageY * 2) / 100;
+        heroContent.style.transform = `translate(${x}px, ${y}px)`;
+    }
+});
+
+// Add hover effects to cards
+document.querySelectorAll('.project-card, .skill-category, .about-card, .education-item, .certification-card, .activity-card, .contact-item').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transition = 'all 0.3s ease';
+    });
+});
+
+// Scroll progress indicator
+window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollPercentage = (scrollTop / scrollHeight) * 100;
+    
+    let progressBar = document.querySelector('.scroll-progress');
+    if (!progressBar) {
+        progressBar = document.createElement('div');
+        progressBar.className = 'scroll-progress';
+        progressBar.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-purple), var(--accent-cyan));
+            z-index: 1001;
+            transition: width 0.1s ease;
+        `;
+        document.body.appendChild(progressBar);
+    }
+    progressBar.style.width = scrollPercentage + '%';
+});
+
+// Dynamic year in footer
+document.addEventListener('DOMContentLoaded', () => {
+    const yearElement = document.querySelector('.footer p');
+    if (yearElement) {
+        const currentYear = new Date().getFullYear();
+        yearElement.innerHTML = `Built with <span>&lt;3</span> | © ${currentYear} Kondapalli Bhanu Prakash`;
+    }
+});
+
+// Performance: Debounce scroll events
+function debounce(func, wait = 10) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+}
+
+// Optimize scroll handlers
+window.addEventListener('scroll', debounce(() => {
+    // Scroll-based animations handled by Intersection Observer
+}));
+
+// Add zoom-in animation for images on scroll
+const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('zoom-in');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.code-editor').forEach(img => {
+    imageObserver.observe(img);
+});
+
+// Console message
+console.log('%c🚀 Portfolio loaded successfully!', 'color: #58a6ff; font-size: 14px;');
+console.log('%cBuilt by Kondapalli Bhanu Prakash', 'color: #7ee787; font-size: 12px;');
+
 // Navbar background change on scroll with blur
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
